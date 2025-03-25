@@ -16,7 +16,7 @@ jobs:
         id: getfile
         run: |-
           echo "" > already_filled_files.txt
-          changed_files=$(git diff --name-only --diff-filter=M origin/main HEAD)
+          changed_files=$(git diff --name-only --diff-filter=M origin/main HEAD^)
 
           echo "newly changed files: $changed_files"
 
@@ -25,7 +25,7 @@ jobs:
                       dir=$(dirname "$file")
                       readme_path="$dir/README.md"
                       if [[ -f "$readme_path" ]]; then
-                        echo "./$file" >> already_filled_files.txt
+                        echo "./$readme_path" >> already_filled_files.txt
                       fi
                 fi
           done <<< "$changed_files"
