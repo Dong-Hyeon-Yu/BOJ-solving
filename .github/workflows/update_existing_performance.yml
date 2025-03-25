@@ -20,6 +20,7 @@ jobs:
           	if grep -q "### 성능 요약" "$file"; then
           		echo "$file" >> already_filled_files.txt
           	fi
+          cat already_filled_files.txt
           done < <(find . -name "*.py" -print0)
       - name: Update Performance in Markdown
         uses: dltkdgns00/BOJ-action@main
@@ -41,7 +42,7 @@ jobs:
           git status
 
           if [[ -n "$(git status --porcelain)" ]]; then
-          	git commit -m "Update performance details"
+          	git commit -m "Re-Update performance details"
           	git push
           else
           	echo "No changes to commit."
