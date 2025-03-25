@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
           token: ${{ secrets.GH_TOKEN }}
@@ -16,12 +16,21 @@ jobs:
         id: getfile
         run: |-
           echo "" > already_filled_files.txt
-          while IFS= read -r -d $'\0' file; do
-          	if grep -q "### 성능 요약" "$file"; then
-          		echo "$file" >> already_filled_files.txt
-          	fi
-          cat already_filled_files.txt
-          done < <(find . -name "*.py" -print0)
+          changed_files=$(git diff --name-only --diff-filter=M origin/main HEAD)
+
+          echo "newly changed files: $changed_files"
+
+          while IFS= read -r file; do
+                if [[ "$file" == *.py ]]; then
+                      dir=$(dirname "$file")
+                      readme_path="$dir/README.md"
+                      if [[ -f "$readme_path" ]]; then
+                        echo "./$file" >> already_filled_files.txt
+                      fi
+                fi
+          done <<< "$changed_files"
+
+          cat ./already_filled_files.txt
       - name: Update Performance in Markdown
         uses: dltkdgns00/BOJ-action@main
         with:
