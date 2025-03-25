@@ -9,7 +9,7 @@
 #    Solved: 2025/03/25 16:31:27 by ydh9516       ###          ###   ##.kr     #
 #                                                                              #
 #  **************************************************************************  #
-import sys 
+import sys
 
 n, m, x, y, k = tuple(map(int, sys.stdin.readline().split()))
 graph = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]

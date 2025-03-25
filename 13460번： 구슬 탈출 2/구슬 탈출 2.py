@@ -12,7 +12,7 @@
 
 from queue import deque
 from collections import namedtuple
-import sys 
+import sys
 
 Point = namedtuple('Point', 'x y')
 Direction = namedtuple('Direction', 'x y')
