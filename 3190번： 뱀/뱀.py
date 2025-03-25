@@ -10,7 +10,7 @@
 #                                                                              #
 #  **************************************************************************  #
 from queue import deque
-import sys
+import sys 
 
 n = int(sys.stdin.readline())
 k = int(sys.stdin.readline())

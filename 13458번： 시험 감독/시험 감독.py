@@ -11,7 +11,7 @@
 #  **************************************************************************  #
 
 import math
-import sys
+import sys 
 
 n = int(sys.stdin.readline())
 testers = list(map(int, sys.stdin.readline().split()))
