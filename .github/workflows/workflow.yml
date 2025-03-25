@@ -21,7 +21,6 @@ jobs:
           		echo "$file" >> not_filled_files.txt
           	fi
           done < <(find . -name "*.md" -print0)
-          cat not_filled_files.txt
       - name: Update Performance in Markdown
         uses: dltkdgns00/BOJ-action@main
         with:

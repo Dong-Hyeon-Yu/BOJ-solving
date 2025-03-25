@@ -16,21 +16,22 @@ jobs:
         id: getfile
         run: |-
           echo "" > already_filled_files.txt
+          git config --global core.quotepath false
           changed_files=$(git diff --name-only --diff-filter=M origin/main HEAD^)
 
-          echo "newly changed files: $changed_files"
-
           while IFS= read -r file; do
+
                 if [[ "$file" == *.py ]]; then
-                      dir=$(dirname "$file")
-                      readme_path="$dir/README.md"
-                      if [[ -f "$readme_path" ]]; then
-                        echo "./$readme_path" >> already_filled_files.txt
-                      fi
+                        dir=$(dirname "$file")
+                        
+                        readme_path="$dir/README.md"
+                        echo "README file is: $readme_path"
+                        if [[ -f "$readme_path" ]]; then
+                            echo "$readme_path" >> already_filled_files.txt
+                            echo "📄 Python: "$file"  👉  📘 README: $readme_path"
+                        fi
                 fi
           done <<< "$changed_files"
-
-          cat ./already_filled_files.txt
       - name: Update Performance in Markdown
         uses: dltkdgns00/BOJ-action@main
         with:
