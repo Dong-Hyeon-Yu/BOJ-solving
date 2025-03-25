@@ -12,10 +12,10 @@
 
 from copy import deepcopy
 from pprint import pprint
+import sys
 
-
-n = int(input())
-graph = [list(map(int, input().split())) for _ in range(n)]
+n = int(sys.stdin.readline())
+graph = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
 
 LEFT, RIGHT, UP, DOWN = (0,-1),(0,1),(-1,0),(1,0)
 directions = [LEFT, RIGHT, UP, DOWN]

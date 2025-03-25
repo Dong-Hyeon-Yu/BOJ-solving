@@ -9,10 +9,11 @@
 #    Solved: 2025/03/25 16:31:27 by ydh9516       ###          ###   ##.kr     #
 #                                                                              #
 #  **************************************************************************  #
+import sys
 
-n, m, x, y, k = tuple(map(int, input().split()))
-graph = [list(map(int, input().split())) for _ in range(n)]
-cmds = list(map(int, input().split()))
+n, m, x, y, k = tuple(map(int, sys.stdin.readline().split()))
+graph = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
+cmds = list(map(int, sys.stdin.readline().split()))
 # dice = [[0] * 3 for _ in range(4)]
 dice = [0,0,0,0,0,0]
 
@@ -21,7 +22,7 @@ def check_boundary(_x, _y):
     return 0 <= _x and _x < n and 0 <= _y and _y < m
 
 def _rotate_dice_to_left():
-    dice[5],dice[3],dice[2],dice[1] = dice[3],dice[2],dice[1],dice[5]
+    dice[5], dice[3], dice[2], dice[1] = dice[3], dice[2], dice[1], dice[5]
 
 def _rotate_dice_to_right():
     dice[1],dice[2],dice[3],dice[5] = dice[2],dice[3],dice[5],dice[1]

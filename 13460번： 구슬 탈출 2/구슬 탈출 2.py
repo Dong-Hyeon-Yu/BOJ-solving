@@ -12,12 +12,13 @@
 
 from queue import deque
 from collections import namedtuple
+import sys
 
 Point = namedtuple('Point', 'x y')
 Direction = namedtuple('Direction', 'x y')
 
-n, m = map(int, input().split())
-graph = [input() for _ in range(n)]
+n, m = map(int, sys.stdin.readline().split())
+graph = [sys.stdin.readline() for _ in range(n)]
 LEFT, RIGHT, UP, DOWN = Direction(0,-1),Direction(0,1),Direction(-1,0),Direction(1,0)
 direction = [LEFT, RIGHT, UP, DOWN] # l, r, u, d
 red, blue, hole = Point(0,0), Point(0,0), Point(0,0)

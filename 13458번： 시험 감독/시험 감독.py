@@ -11,10 +11,11 @@
 #  **************************************************************************  #
 
 import math
+import sys
 
-n = int(input())
-testers = list(map(int, input().split()))
-b, c = tuple(map(int, input().split()))
+n = int(sys.stdin.readline())
+testers = list(map(int, sys.stdin.readline().split()))
+b, c = tuple(map(int, sys.stdin.readline().split()))
 
 cnt = 0
 for i in range(n):

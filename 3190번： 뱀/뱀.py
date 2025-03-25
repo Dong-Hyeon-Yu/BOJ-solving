@@ -10,15 +10,15 @@
 #                                                                              #
 #  **************************************************************************  #
 from queue import deque
-import pprint
+import sys
 
-n = int(input())
-k = int(input())
-apples = set(tuple(map(int, input().split())) for _ in range(k))
-tmp = int(input())
+n = int(sys.stdin.readline())
+k = int(sys.stdin.readline())
+apples = set(tuple(map(int, sys.stdin.readline().split())) for _ in range(k))
+tmp = int(sys.stdin.readline())
 movement = deque()
 for _ in range(tmp):
-    t, move_type = input().split()
+    t, move_type = sys.stdin.readline().split()
     t = int(t)
     movement.append((t, move_type))
 
